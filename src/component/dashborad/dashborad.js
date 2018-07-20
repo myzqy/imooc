@@ -4,10 +4,7 @@ import { connect } from 'react-redux';
 import { NavBar } from '../../../node_modules/antd-mobile';
 import NavLink from '../../component/navlink/navlink';
 import Boss from '../../component/boss/boss';
-
-const Genius = () => {
-    return <h2>牛人首页</h2>
-}
+import Genius from '../../component/genius/genius';
 
 const Msg = () => {
     return <h2>消息列表</h2>
@@ -52,8 +49,6 @@ class DashBorad extends React.Component{
             component: User
         }]
 
-        console.log(pathname, 'pathname**')
-        
         return (
             <div>
                 <NavBar className="am-navbar" mode="dard">
@@ -61,13 +56,13 @@ class DashBorad extends React.Component{
                 </NavBar>
                 <div>
                     <Switch>
-                        <Route  />
+                        {navList.map((item, key) => (
+                            <Route key={item.path + key} component={item.component} path={item.path} />    
+                        ))}
+                        
                     </Switch>
                 </div>
-                DashBorad
                 <NavLink data={navList}/>
-                {/* <Route path='/boos' /> */}
-                {/* <Route path= '/genius' /> */}
                 <footer></footer>
             </div>
         )

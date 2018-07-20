@@ -7,8 +7,14 @@ const urils = require('utility');
 const _filter = {'pwd': 0, '__v': 0};
 
 Router.get('/list', (req, res) => {
-    User.find({}, (err, doc) => {
-        return res.json(doc);
+    const {type} = req.query;
+    let data = {};
+    if(type) {
+        data = {type}
+    }
+
+    User.find(data, (err, doc) => {
+        return res.json({code: 0, data: doc});
     });
 });
 Router.get('/remove', (req, res) => {
