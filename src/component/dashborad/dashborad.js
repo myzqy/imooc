@@ -5,6 +5,7 @@ import { NavBar } from '../../../node_modules/antd-mobile';
 import NavLink from '../../component/navlink/navlink';
 import Boss from '../../component/boss/boss';
 import Genius from '../../component/genius/genius';
+import User from '../../component/user/user';
 
 const Msg = () => {
     return <h2>消息列表</h2>
@@ -54,7 +55,7 @@ class DashBorad extends React.Component{
                 <NavBar className="am-navbar" mode="dard">
                     {navList.find(v => v.path === pathname ).title}
                 </NavBar>
-                <div>
+                <div className="page">
                     <Switch>
                         {navList.map((item, key) => (
                             <Route key={item.path + key} component={item.component} path={item.path} />    
